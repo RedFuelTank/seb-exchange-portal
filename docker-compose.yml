@@ -1,0 +1,14 @@
+version: "3"
+services:
+  back-end:
+    build: ./backend
+    container_name: "exchange-portal-api"
+    ports:
+      - "8080:8080"
+  front-end:
+    build: ./frontend
+    container_name: "exchange-portal-ui"
+    ports:
+      - "4200:80"
+    links:
+      - back-end
