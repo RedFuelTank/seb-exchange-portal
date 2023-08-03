@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/currency")
 class CurrencyController {
   private final CurrencyService service;
-  @GetMapping(value = "/current")
-  Iterable<CurrencyReportForm> getCurrentExchangeRates() {
+  @GetMapping("/current")
+  public Iterable<ExchangeRateForm> getCurrentExchangeRates() {
     return service.getCurrentExchangeRates();
   }
 }

@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor(force = true)
 @Getter
 @Setter
-public final class CurrencyReportForm {
+public final class ExchangeRateForm {
   @JsonProperty(namespace = "time")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private final LocalDate time;

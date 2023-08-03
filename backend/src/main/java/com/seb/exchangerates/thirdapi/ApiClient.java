@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.seb.exchangerates.currency.Currency;
 import com.seb.exchangerates.currency.CurrencyDataFetcher;
-import com.seb.exchangerates.currency.CurrencyReportForm;
+import com.seb.exchangerates.currency.ExchangeRateForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class ApiClient implements CurrencyDataFetcher {
   private static final WebClient webClient = WebClient.create("http://www.lb.lt/webservices/FxRates/FxRates.asmx");
   private final XmlMapper xmlMapper;
   @Override
-  public Iterable<CurrencyReportForm> getCurrentExchangeRates() {
+  public Iterable<ExchangeRateForm> getCurrentExchangeRates() {
     log.info("Data fetching process is running ...");
     Mono<String> rawBody = get("/getCurrentFxRates?tp=EU");
 
@@ -39,8 +39,8 @@ public class ApiClient implements CurrencyDataFetcher {
       .toList();
   }
 
-  private static CurrencyReportForm getCurrencyReportForm(FxRate e) {
-    return new CurrencyReportForm(
+  private static ExchangeRateForm getCurrencyReportForm(FxRate e) {
+    return new ExchangeRateForm(
       e.getDate(),
       e.getCurrencyAmounts().stream().map(c -> new Currency(c.getCurrency(), c.getAmount())).toList()
     );
