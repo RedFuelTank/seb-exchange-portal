@@ -1,5 +1,6 @@
-package com.seb.exchangerates.currency;
+package com.seb.exchangerates.currency.infrastructure;
 
+import com.seb.exchangerates.currency.ExchangeRateForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
