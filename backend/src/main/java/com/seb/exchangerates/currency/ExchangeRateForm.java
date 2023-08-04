@@ -8,5 +8,10 @@ import java.time.LocalDate;
 public record ExchangeRateForm(@JsonProperty(namespace = "time")
                                @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
                                LocalDate time,
-                               @JsonProperty(namespace = "exchangeRate")
-                               Iterable<Currency> currencies) {}
+
+                               @JsonProperty(namespace = "fromCurrency")
+                               Currency fromCurrency,
+                               @JsonProperty(namespace = "toCurrency")
+                               Currency toCurrency,
+                               @JsonProperty(namespace = "rate")
+                               Double rate) {}
