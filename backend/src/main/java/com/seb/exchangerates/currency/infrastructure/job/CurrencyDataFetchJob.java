@@ -2,7 +2,7 @@ package com.seb.exchangerates.currency.infrastructure.job;
 
 import com.seb.exchangerates.currency.CurrencyDataFetcher;
 import com.seb.exchangerates.currency.ExchangeRateForm;
-import com.seb.exchangerates.currency.infrastructure.ExchangeRateRepository;
+import com.seb.exchangerates.currency.infrastructure.CurrencyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.DisallowConcurrentExecution;
@@ -14,12 +14,12 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 @Slf4j
 @DisallowConcurrentExecution
 class CurrencyDataFetchJob extends QuartzJobBean {
-  private final ExchangeRateRepository repository;
+  private final CurrencyService service;
   private final CurrencyDataFetcher fetcher;
 
   @Override
   protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
     Iterable<ExchangeRateForm> currentExchangeRates = fetcher.getCurrentExchangeRates();
-    repository.updateCurrentExchangeRates(currentExchangeRates);
+    service.updateCurrentExchangeRates(currentExchangeRates);
   }
 }

@@ -10,7 +10,9 @@ interface CurrencyMapper {
 
   CurrencyEntity toEntity(Currency currency);
 
-  ExchangeRateForm toForm(ExchangeRateEntity entity);
+  Currency toModel(CurrencyEntity entity);
+
   @Mapping(target = "id", ignore = true)
   ExchangeRateEntity toEntity(ExchangeRateForm form);
+  ExchangeRateForm toModel(ExchangeRateEntity entity);
 }
