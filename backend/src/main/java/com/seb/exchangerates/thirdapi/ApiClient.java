@@ -40,9 +40,13 @@ public class ApiClient implements CurrencyDataFetcher {
   }
 
   private static ExchangeRateForm getCurrencyReportForm(FxRate e) {
+    List<Currency> currencies = e.getCurrencyAmounts().stream()
+      .map(c -> new Currency(Currency.Type.valueOf(c.getCurrency()))).toList();
     return new ExchangeRateForm(
       e.getDate(),
-      e.getCurrencyAmounts().stream().map(c -> new Currency(c.getCurrency(), c.getAmount())).toList()
+      currencies.get(0),
+      currencies.get(1),
+      e.getCurrencyAmounts().get(1).getAmount()
     );
   }
 
