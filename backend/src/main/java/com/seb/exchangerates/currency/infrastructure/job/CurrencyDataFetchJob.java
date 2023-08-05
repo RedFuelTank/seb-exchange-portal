@@ -20,6 +20,6 @@ class CurrencyDataFetchJob extends QuartzJobBean {
   @Override
   protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
     Iterable<ExchangeRateForm> currentExchangeRates = fetcher.getCurrentExchangeRates();
-    repository.save(currentExchangeRates);
+    repository.updateCurrentExchangeRates(currentExchangeRates);
   }
 }
