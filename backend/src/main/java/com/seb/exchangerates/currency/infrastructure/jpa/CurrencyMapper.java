@@ -8,6 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 interface CurrencyMapper {
 
+  ExchangeRateStatisticsEntity toStatisticsEntity(ExchangeRateEntity entity);
   CurrencyEntity toEntity(Currency currency);
 
   Currency toModel(CurrencyEntity entity);
