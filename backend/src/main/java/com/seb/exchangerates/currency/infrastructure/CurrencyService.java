@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 class CurrencyService {
-  private ExchangeRateRepository repository;
+  private final ExchangeRateRepository repository;
   public Iterable<ExchangeRateForm> getCurrentExchangeRates() {
     return repository.findAll();
   }
