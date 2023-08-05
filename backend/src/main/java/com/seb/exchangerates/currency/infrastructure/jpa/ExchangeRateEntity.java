@@ -17,10 +17,10 @@ class ExchangeRateEntity {
 
   LocalDate time;
 
-  @OneToOne
+  @ManyToOne
   private CurrencyEntity fromCurrency;
 
-  @OneToOne
+  @ManyToOne
   private CurrencyEntity toCurrency;
 
   private Double rate;
