@@ -10,7 +10,7 @@ import java.util.stream.StreamSupport;
 
 @Repository
 @RequiredArgsConstructor
-public class ExchangeRateRepositoryImpl implements ExchangeRateRepository {
+class ExchangeRateRepositoryImpl implements ExchangeRateRepository {
   private final ExchangeRateJpaRepository exchangeRateRepository;
   private final CurrencyJpaRepository currencyRepository;
   private final ExchangeRateStatisticsJpaRepository statisticsRepository;
