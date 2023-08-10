@@ -22,5 +22,6 @@ class ExchangeRateStatisticsEntity {
 
   @ManyToOne
   private CurrencyEntity toCurrency;
+
   private double rate;
 }

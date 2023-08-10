@@ -9,11 +9,12 @@ import org.mapstruct.Mapping;
 interface CurrencyMapper {
 
   ExchangeRateStatisticsEntity toStatisticsEntity(ExchangeRateEntity entity);
-  CurrencyEntity toEntity(Currency currency);
+  ExchangeRateForm toModel(ExchangeRateStatisticsEntity entity);
 
-  Currency toModel(CurrencyEntity entity);
+  CurrencyEntity toEntity(Currency currency);
 
   @Mapping(target = "id", ignore = true)
   ExchangeRateEntity toEntity(ExchangeRateForm form);
+
   ExchangeRateForm toModel(ExchangeRateEntity entity);
 }

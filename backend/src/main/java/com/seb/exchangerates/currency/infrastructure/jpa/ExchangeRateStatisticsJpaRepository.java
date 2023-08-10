@@ -5,4 +5,4 @@ import org.springframework.data.repository.CrudRepository;
 
 interface ExchangeRateStatisticsJpaRepository extends
   CrudRepository<ExchangeRateStatisticsEntity, Long>,
-  QuerydslPredicateExecutor<ExchangeRateStatisticsEntity> {}
+  QuerydslPredicateExecutor<ExchangeRateStatisticsEntity> { }
