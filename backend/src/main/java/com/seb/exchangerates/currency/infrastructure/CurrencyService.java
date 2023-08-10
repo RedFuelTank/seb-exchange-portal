@@ -1,5 +1,6 @@
 package com.seb.exchangerates.currency.infrastructure;
 
+import com.seb.exchangerates.currency.Currency;
 import com.seb.exchangerates.currency.ExchangeRateForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,5 +22,14 @@ public class CurrencyService {
         exchangeRateRepository.save(e);
       }
     });
+  }
+
+  public Iterable<ExchangeRateForm> getExchangeRateHistory(Currency.Type from, Currency.Type to) {
+    return exchangeRateRepository.getExchangeRateHistory(from ,to);
+  }
+
+  public ExchangeRateForm getCurrentExchangeRateFor(Currency.Type from, Currency.Type to) {
+    return exchangeRateRepository.getCurrentExchangeRateFor(from, to)
+      .orElseThrow(IllegalArgumentException::new);
   }
 }
