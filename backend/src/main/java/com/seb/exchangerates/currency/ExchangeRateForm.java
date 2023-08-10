@@ -5,13 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
 
-public record ExchangeRateForm(@JsonProperty(namespace = "time")
+public record ExchangeRateForm(@JsonProperty(value = "time")
                                @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
                                LocalDate time,
-
-                               @JsonProperty(namespace = "fromCurrency")
+                               @JsonProperty(value = "from")
                                Currency fromCurrency,
-                               @JsonProperty(namespace = "toCurrency")
+                               @JsonProperty(value = "to")
                                Currency toCurrency,
-                               @JsonProperty(namespace = "rate")
+                               @JsonProperty(value = "rate")
                                Double rate) {}

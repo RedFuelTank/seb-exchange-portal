@@ -2,8 +2,8 @@ package com.seb.exchangerates.currency;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record Currency(@JsonProperty(namespace = "type")
-                         Type code) {
+public record Currency(@JsonProperty(value = "code")
+                       Type code) {
   public enum Type {
     AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BMD, BND, BOB, BRL, BSD, BTN, BWP,
     BYN, BZD, CAD, CDF, CHF, CLP, CNY, COP, CRC, CUC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EGP, ERN, ETB, EUR, FJD, FKP,
