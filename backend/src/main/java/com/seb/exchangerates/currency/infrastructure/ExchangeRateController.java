@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/exchange-rates")
 class ExchangeRateController {
   private final CurrencyService service;
-  @GetMapping("/current")
+  @GetMapping("/current/all")
   public Iterable<ExchangeRateForm> getCurrentExchangeRates() {
     return service.getCurrentExchangeRates();
   }
