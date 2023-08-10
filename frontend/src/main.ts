@@ -1,5 +1,6 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import 'chart.js/auto'
 
 import { AppModule } from './app/app.module';
 
