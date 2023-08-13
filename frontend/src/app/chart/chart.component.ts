@@ -51,9 +51,12 @@ export class ChartComponent implements OnInit {
     )
       .subscribe(dataset => {
           dataset.forEach(data => {
-              this.lineChartData.forEach(chartData =>
-                chartData.data.push(data.rate)
+              this.lineChartData.forEach(chartData => {
+                  chartData.data = []
+                  chartData.data.push(data.rate)
+                }
               )
+              this.lineChartLabels = []
               this.lineChartLabels.push(data.time)
             }
           )
