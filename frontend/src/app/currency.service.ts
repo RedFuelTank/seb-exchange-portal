@@ -16,4 +16,8 @@ export class CurrencyService {
     return this.http.get<ExchangeRateData>(CurrencyService.REST_API_SERVER + `/exchange-rates/current?from=${from}&to=${to}`)
   }
 
+  getExchangeRateHistory(from: string, to: string) {
+    return this.http.get<ExchangeRateData[]>(CurrencyService.REST_API_SERVER + `/exchange-rates/history?from=${from}&to=${to}`)
+  }
+
 }
