@@ -21,6 +21,11 @@ export class ChartComponent implements OnInit {
   lineChartLabels: Array<any> = [];
   lineChartType: ChartType = 'line';
   lineChartOptions: any = {
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
     responsive: true
   };
   chartForm: FormGroup;
