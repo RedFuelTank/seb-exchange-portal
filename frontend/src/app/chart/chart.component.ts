@@ -50,16 +50,16 @@ export class ChartComponent implements OnInit {
       this.chartForm.get('toCurrency')!.value
     )
       .subscribe(dataset => {
+          var set:ChartDataset[]  = [{data: []}]
+          var label:string[] = []
           dataset.forEach(data => {
-              this.lineChartData.forEach(chartData => {
-                  chartData.data = []
-                  chartData.data.push(data.rate)
-                }
-              )
-              this.lineChartLabels = []
-              this.lineChartLabels.push(data.time)
+              set.forEach(subset => subset.data.push(data.rate))
+              label.push(data.time)
             }
           )
+          this.lineChartData = set
+          this.lineChartLabels = label
+
           const chart: any = this.ngChartjsService.getChart('myChart');
           chart.update()
           this.chartVisible = true;
