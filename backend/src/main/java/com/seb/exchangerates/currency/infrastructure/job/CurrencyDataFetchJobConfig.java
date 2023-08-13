@@ -18,7 +18,16 @@ class CurrencyDataFetchJobConfig {
   Trigger trigger() {
     return TriggerBuilder.newTrigger()
       .forJob(currencyJodDetail())
-      .withSchedule(CronScheduleBuilder.cronSchedule("5 * * * * ?"))
+      .withSchedule(CronScheduleBuilder.cronSchedule("0 0 0 * * ?"))
+      .build();
+  }
+
+  @Bean
+  Trigger immediateTrigger() {
+    return TriggerBuilder
+      .newTrigger()
+      .startNow()
+      .forJob(currencyJodDetail())
       .build();
   }
 }
