@@ -11,6 +11,7 @@ export class ConvertComponent {
   currencies: string[] = []
   convertForm!: FormGroup
   toValue: number = 0
+  currentRate: number = 0
 
   constructor(private service: CurrencyService, private fb: FormBuilder) {
     this.service.getCurrenciesCodes().subscribe(data => {
@@ -21,13 +22,14 @@ export class ConvertComponent {
       {
         toCurrency: ['', Validators.required],
         fromValue: [0, Validators.required],
-        toValue: [{value: this.toValue, disabled: true}, Validators.required]
+        toValue: [{value: this.toValue, disabled: true}, Validators.required],
+        rate : [{value: this.currentRate, disabled: true}]
       });
   }
 
   buttonPress() {
     this.service.getExchangeRateFor("EUR", this.convertForm.get('toCurrency')!.value).subscribe((data) => {
-      this.convertForm.patchValue({toValue: this.convertForm.controls['fromValue']!.value * data.rate})
+      this.convertForm.patchValue({toValue: this.convertForm.controls['fromValue']!.value * data.rate, rate: data.rate})
       }
       , error => {
       alert("This exchange rate does not exist")
