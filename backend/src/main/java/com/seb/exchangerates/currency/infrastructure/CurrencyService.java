@@ -7,11 +7,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.StreamSupport;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class CurrencyService {
   private final ExchangeRateRepository exchangeRateRepository;
+
   public Iterable<ExchangeRateForm> getCurrentExchangeRates() {
     return exchangeRateRepository.findAll();
   }
@@ -26,7 +30,13 @@ public class CurrencyService {
   }
 
   public Iterable<ExchangeRateForm> getExchangeRateHistory(Currency.Type from, Currency.Type to) {
-    return exchangeRateRepository.getExchangeRateHistory(from ,to);
+    var exceptionMessage = String.format("Exchange rate history (from: %s, to: %s) has not been found", from, to);
+    List<ExchangeRateForm> exchangeRateHistory = StreamSupport.stream(
+        exchangeRateRepository.getExchangeRateHistory(from, to).spliterator(), true
+      )
+      .toList();
+    if (exchangeRateHistory.isEmpty()) throw new NotFoundException(exceptionMessage);
+    return exchangeRateHistory;
   }
 
   public ExchangeRateForm getCurrentExchangeRateFor(Currency.Type from, Currency.Type to) {
