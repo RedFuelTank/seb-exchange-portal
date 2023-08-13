@@ -75,3 +75,4 @@ Data about available currencies is requested by Frontend from Backend.
 The idea was to implement the ability to convert between currencies that do not have a direct entry in the database by finding the optimal path in the graph where each node is a different currency
 
 If we imagine that the database record is a non-directed graph. It is possible to find the exchange rate between two currencies that are not directly related to each other
+![graph.png](assets/graph.png)
