@@ -40,14 +40,13 @@ export class ChartComponent implements OnInit {
 
     this.chartForm = this.fb.group(
       {
-        fromCurrency: ['', Validators.required],
         toCurrency: ['', Validators.required],
       });
   }
 
   buttonPress() {
     this.service.getExchangeRateHistory(
-      this.chartForm.get('fromCurrency')!.value,
+      "EUR",
       this.chartForm.get('toCurrency')!.value
     )
       .subscribe(dataset => {

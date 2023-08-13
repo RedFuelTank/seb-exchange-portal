@@ -7,9 +7,8 @@
             <label>From:</label>
           </div>
           <div class="row mb-3">
-            <select class="form-select" formControlName="fromCurrency" required>
-              <option value="" disabled selected hidden>Show All</option>
-              <option *ngFor="let currency of currencies" >{{currency}}</option>
+            <select class="form-select" disabled>
+              <option [defaultSelected]="true">EUR</option>
             </select>
           </div>
           <div class="row mb-3">
@@ -41,8 +40,7 @@
       </div>
       <div class="d-flex justify-content-end">
         <button class="btn btn-primary" (click)="buttonPress()"
-                [disabled]="!(convertForm.controls['fromCurrency'].valid
-                && convertForm.controls['fromValue'].valid
+                [disabled]="!(convertForm.controls['fromValue'].valid
                 && convertForm.controls['toCurrency'].valid)">Convert</button>
       </div>
     </form>

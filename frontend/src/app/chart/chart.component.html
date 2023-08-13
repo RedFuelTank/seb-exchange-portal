@@ -7,9 +7,8 @@
             <label>From:</label>
           </div>
           <div class="row mb-3">
-            <select class="form-select" formControlName="fromCurrency" required>
-              <option value="" disabled selected hidden>Show All</option>
-              <option *ngFor="let currency of currencies">{{currency}}</option>
+            <select class="form-select" disabled>
+              <option [defaultSelected]="true">EUR</option>
             </select>
           </div>
         </div>
@@ -27,8 +26,7 @@
       </div>
       <div class="d-flex justify-content-end mb-3">
         <button class="btn btn-primary" (click)="buttonPress()"
-                [disabled]="!(chartForm.controls['fromCurrency'].valid
-                && chartForm.controls['toCurrency'].valid)">View chart</button>
+                [disabled]="!chartForm.controls['toCurrency'].valid">View chart</button>
       </div>
       <div>
         <canvas id="myChart" ngChartjs

@@ -19,7 +19,6 @@ export class ConvertComponent {
     })
     this.convertForm = this.fb.group(
       {
-        fromCurrency: ['', Validators.required],
         toCurrency: ['', Validators.required],
         fromValue: [0, Validators.required],
         toValue: [{value: this.toValue, disabled: true}, Validators.required]
@@ -27,7 +26,7 @@ export class ConvertComponent {
   }
 
   buttonPress() {
-    this.service.getExchangeRateFor(this.convertForm.get('fromCurrency')!.value, this.convertForm.get('toCurrency')!.value).subscribe((data) => {
+    this.service.getExchangeRateFor("EUR", this.convertForm.get('toCurrency')!.value).subscribe((data) => {
       this.convertForm.patchValue({toValue: this.convertForm.controls['fromValue']!.value * data.rate})
       }
       , error => {
