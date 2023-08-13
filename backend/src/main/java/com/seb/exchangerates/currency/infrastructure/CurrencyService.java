@@ -2,6 +2,7 @@ package com.seb.exchangerates.currency.infrastructure;
 
 import com.seb.exchangerates.currency.Currency;
 import com.seb.exchangerates.currency.ExchangeRateForm;
+import com.seb.exchangerates.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -29,8 +30,9 @@ public class CurrencyService {
   }
 
   public ExchangeRateForm getCurrentExchangeRateFor(Currency.Type from, Currency.Type to) {
+    var exceptionMessage = String.format("Exchange rate (from: %s, to: %s) has not been found", from, to);
     return exchangeRateRepository.getCurrentExchangeRateFor(from, to)
-      .orElseThrow(IllegalArgumentException::new);
+      .orElseThrow(() -> new NotFoundException(exceptionMessage));
   }
 
   public Iterable<Currency.Type> getCodes() {
