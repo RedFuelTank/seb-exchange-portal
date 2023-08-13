@@ -20,4 +20,7 @@ export class CurrencyService {
     return this.http.get<ExchangeRateData[]>(CurrencyService.REST_API_SERVER + `/exchange-rates/history?from=${from}&to=${to}`)
   }
 
+  getCurrenciesCodes() {
+    return this.http.get<string[]>(CurrencyService.REST_API_SERVER + `/currencies/codes`);
+  }
 }
