@@ -17,4 +17,6 @@ public interface ExchangeRateRepository {
   Iterable<ExchangeRateForm> getExchangeRateHistory(Currency.Type from, Currency.Type to);
 
   Optional<ExchangeRateForm> getCurrentExchangeRateFor(Currency.Type from, Currency.Type to);
+
+  Iterable<Currency.Type> getCodes();
 }

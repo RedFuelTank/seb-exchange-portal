@@ -103,4 +103,9 @@ class ExchangeRateRepositoryImpl implements ExchangeRateRepository {
 
     return possibleCurrent.map(mapper::toModel);
   }
+
+  @Override
+  public Iterable<Currency.Type> getCodes() {
+    return StreamSupport.stream(currencyRepository.findAll().spliterator(), true).map(CurrencyEntity::getCode).toList();
+  }
 }

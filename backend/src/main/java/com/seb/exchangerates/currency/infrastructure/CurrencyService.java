@@ -32,4 +32,8 @@ public class CurrencyService {
     return exchangeRateRepository.getCurrentExchangeRateFor(from, to)
       .orElseThrow(IllegalArgumentException::new);
   }
+
+  public Iterable<Currency.Type> getCodes() {
+    return exchangeRateRepository.getCodes();
+  }
 }
